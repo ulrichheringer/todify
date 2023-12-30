@@ -1,8 +1,12 @@
 import http from "http";
 import express, { Express } from "express";
 import morgan from "morgan";
+import routes from "./routes/todos";
+import mongoose from "mongoose";
 
 const router: Express = express();
+
+mongoose.connect("mongodb://localhost:27017/todify");
 
 /** Logging */
 router.use(morgan("dev"));
@@ -29,7 +33,7 @@ router.use((req, res, next) => {
 });
 
 /** Routes */
-// router.use('/', routes);
+router.use("/", routes);
 
 /** Error handling */
 router.use((req, res, next) => {
