@@ -12,6 +12,8 @@ export interface ITodo extends Document {
     name: string;
     description: string;
     status: Status;
+    edited: boolean;
+    userId: ObjectId;
     projectId?: ObjectId;
 }
 
@@ -19,6 +21,12 @@ const todoSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     status: { type: String, enum: ["NSY", "IP", "D", "R"], required: true },
+    edited: { type: Boolean, default: false },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
     projectId: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
 });
 
