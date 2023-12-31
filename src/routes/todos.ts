@@ -3,6 +3,6 @@ import todosController from "../controllers/todos";
 
 const routes = express.Router();
 
-routes.get("/todos", todosController.getTodos);
+routes.get("/todos/:userId", todosController.getTodos);
 
 export = routes;
