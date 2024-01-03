@@ -5,5 +5,6 @@ const routes = express.Router();
 
 routes.get("/todos/:userId", todosController.getTodos);
 routes.post("/todos", todosController.createTodo);
+routes.put("/todos/:id");
 
 export = routes;
